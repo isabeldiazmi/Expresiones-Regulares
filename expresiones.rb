@@ -27,7 +27,25 @@ def regresaNumeros(str)
   end
 end
 
-cuenta = "1234-123-123"
+def regresaX(str)
+  arr = regresaNumeros(str)
+  "XXXX-XXX-#{arr[2]}"
+end
+
+def formateaCuenta(str)
+  if /\d{4}\S\d{3}\S\d{3}/ === str
+    str.gsub(/(\d{4})\S(\d{3})\S(\d{3})/, '\1-\2-\3')
+  elsif /\d{10}/ === str
+    str.gsub(/(\d{4})(\d{3})(\d{3})/, '\1-\2-\3')
+  else
+    nil
+  end   
+end
+
+#cuenta = "1234-123-123"
 #p existeCuenta(cuenta)
 #p regresaCuenta("mi cuenta es: 1234-123-123")
-p regresaNumeros(cuenta)
+#p regresaNumeros(cuenta)
+#p regresaX(cuenta)
+puts formateaCuenta("1234.123.123")
+puts formateaCuenta("1234123123")
